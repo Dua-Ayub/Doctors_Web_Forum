@@ -1,0 +1,101 @@
+﻿@model Doctors_Web_Forum.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "Edit Profile";
+    Layout = "_Layout";
+}
+
+<section class="profile-section">
+
+    <div class="home-container">
+
+        <div class="profile-card">
+
+            <div class="profile-header">
+                <h2>Edit Profile</h2>
+                <p>Update your professional information</p>
+            </div>
+
+            <form asp-controller="Account" asp-action="EditProfile" method="post">
+
+                <div class="field">
+                    <label>Full Name</label>
+                    <input asp-for="FullName" class="form-control" />
+                </div>
+
+                <div class="field">
+                    <label>Email</label>
+                    <input asp-for="Email" class="form-control" readonly />
+                </div>
+
+                <div class="field">
+                    <label>Specialty</label>
+                    <input asp-for="Specialty" class="form-control" />
+                </div>
+
+                <div class="field">
+                    <label>Qualification</label>
+                    <input asp-for="Qualification" class="form-control" />
+                </div>
+
+                <div class="field">
+                    <label>Years of Experience</label>
+                    <input asp-for="YearsOfExperience" class="form-control" />
+                </div>
+
+                <div class="field">
+                    <label>City</label>
+                    <input asp-for="City" class="form-control" />
+                </div>
+
+                <div class="field">
+                    <label>Country</label>
+                    <input asp-for="Country" class="form-control" />
+                </div>
+
+                <div class="field">
+                    <label>Phone Number</label>
+                    <input asp-for="PhoneNumber" class="form-control" />
+                </div>
+                <div class="field">
+                    <label>Achievements</label>
+
+                    <textarea asp-for="Achievements"
+                              class="form-control"
+                              rows="4"
+                              placeholder="Write your achievements...">
+    </textarea>
+                </div>
+                <div class="field">
+                    <div class="form-check">
+
+                        <input asp-for="IsProfilePublic"
+                               class="form-check-input" />
+
+                        <label asp-for="IsProfilePublic"
+                               class="form-check-label">
+                            Make my profile public
+                        </label>
+
+                    </div>
+                </div>
+   
+                <div class="profile-buttons">
+                    <button type="submit" class="btn btn-primary">
+                        Save Changes
+                    </button>
+
+                    <a asp-controller="Account"
+                       asp-action="Profile"
+                       class="btn btn-outline-secondary">
+                        Cancel
+                    </a>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>

@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Ask Question";
+    Layout = "_Layout";
+}
+
+<section class="ask-question-section">
+
+    <div class="home-container">
+
+        <div class="ask-card">
+            @if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+            <h2>Ask a Medical Question</h2>
+            <p>Share your medical question with the doctor community.</p>
+
+            <form asp-controller="Question" asp-action="Ask" method="post">
+
+                <div class="field">
+                    <label>Question Title</label>
+                    <input type="text"
+                           name="Title"
+                           class="form-control"
+                           placeholder="Enter question title"
+                           required />
+                </div>
+
+                <div class="field">
+                    <label>Medical SpecialtyId</label>
+
+                   <select name="SpecialtyId" class="form-control" required>
+    <option value="">-- Select Specialty --</option>
+    <option value="1">Cardiology</option>
+    <option value="2">Dermatology</option>
+    <option value="3">Pediatrics</option>
+    <option value="4">General Medicine</option>
+</select>
+                </div>
+
+                <div class="field">
+                    <label>Question Description</label>
+
+                    <textarea
+                        name="Description"
+                        rows="8"
+                        class="form-control"
+                        placeholder="Write your question here..."
+                        required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    Post Question
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>

@@ -1,0 +1,140 @@
+﻿@model Doctors_Web_Forum.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "My Profile";
+    Layout = "_Layout";
+}
+
+<section class="profile-section">
+
+    <div class="home-container">
+
+        <div class="profile-card">
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["SuccessMessage"]
+                </div>
+            }
+
+            <div class="profile-header">
+
+                <div class="profile-avatar">
+                    @Model.FullName.Substring(0, 1).ToUpper()
+                </div>
+
+                <h2>@Model.FullName</h2>
+
+                <p>@Model.Specialty</p>
+
+                @if (Model.IsVerified)
+                {
+                    <span class="verified-badge">✔ Verified Doctor</span>
+                }
+                else
+                {
+                    <span class="pending-badge">Pending Verification</span>
+                }
+
+            </div>
+            <div class="profile-info">
+
+                <!-- Personal Details -->
+                <h4 class="profile-section-title">👤 Personal Details</h4>
+
+                <div class="profile-item">
+                    <label>Full Name</label>
+                    <span>@Model.FullName</span>
+                </div>
+
+                <div class="profile-item">
+                    <label>Email</label>
+                    <span>
+                        @if (Model.IsProfilePublic || (ViewBag.IsOwner ?? false) || (ViewBag.IsAdmin ?? false))
+                        {
+                            @Model.Email
+                        }
+                        else
+                        {
+                            <text>Private</text>
+                        }
+                    </span>
+                </div>
+
+                <!-- Professional Details -->
+                <h4 class="profile-section-title">🩺 Professional Details</h4>
+
+                <div class="profile-item">
+                    <label>Specialty</label>
+                    <span>@Model.Specialty</span>
+                </div>
+
+                <div class="profile-item">
+                    <label>Qualification</label>
+                    <span>@Model.Qualification</span>
+                </div>
+
+                <div class="profile-item">
+                    <label>Experience</label>
+                    <span>@Model.YearsOfExperience Years</span>
+                </div>
+
+                <div class="profile-item">
+                    <label>Achievements</label>
+                    <span>
+                        @(string.IsNullOrWhiteSpace(Model.Achievements)
+                            ? "Not Added"
+                            : Model.Achievements)
+                    </span>
+                </div>
+
+                <!-- Contact Details -->
+                <h4 class="profile-section-title">📞 Contact Details</h4>
+
+                <div class="profile-item">
+                    <label>Phone Number</label>
+                    <span>
+                        @if (Model.IsProfilePublic || (ViewBag.IsOwner ?? false) || (ViewBag.IsAdmin ?? false))
+                        {
+                            @Model.PhoneNumber
+                        }
+                        else
+                        {
+                            <text>Private</text>
+                        }
+                    </span>
+                </div>
+
+                <div class="profile-item">
+                    <label>Profile Visibility</label>
+                    <span>
+                        @(Model.IsProfilePublic ? "Public" : "Private")
+                    </span>
+                </div>
+
+                <div class="profile-item">
+                    <label>City</label>
+                    <span>@Model.City</span>
+                </div>
+
+                <div class="profile-item">
+                    <label>Country</label>
+                    <span>@Model.Country</span>
+                </div>
+
+            </div>
+            <div class="profile-buttons">
+
+                <a asp-controller="Account"
+                   asp-action="EditProfile"
+                   class="btn btn-primary">
+                    Edit Profile
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

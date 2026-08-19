@@ -1,0 +1,64 @@
+﻿@model List<Doctors_Web_Forum.Models.ApplicationUser>
+
+@{
+    ViewData["Title"] = "Doctors Directory";
+    Layout = "_Layout";
+}
+
+<section class="profile-section">
+
+    <div class="home-container">
+
+        <div class="section-header">
+            <h2>Doctors Directory</h2>
+            <p>Browse registered doctors and view their profiles.</p>
+        </div>
+
+        <div class="discussion-grid">
+
+            @foreach (var doctor in Model)
+            {
+                <div class="discussion-card">
+
+                    <h3>@doctor.FullName</h3>
+
+                    <p><strong>Specialty:</strong> @doctor.Specialty</p>
+
+                    <p>
+                        <strong>Location:</strong>
+                        @doctor.City, @doctor.Country
+                    </p>
+
+                    @if (doctor.IsVerified)
+                    {
+                        <span class="verified-badge">
+                            ✔ Verified
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="pending-badge">
+                            Pending
+                        </span>
+                    }
+
+                    <br />
+                    <br />
+
+                    <a asp-controller="Account"
+                       asp-action="ViewProfile"
+                       asp-route-id="@doctor.Id"
+                       class="btn btn-primary">
+
+                        View Profile
+
+                    </a>
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+</section>

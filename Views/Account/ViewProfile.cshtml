@@ -1,0 +1,122 @@
+﻿@model Doctors_Web_Forum.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "Doctor Profile";
+    Layout = "_Layout";
+}
+
+<div class="profile-header">
+
+    <div class="profile-avatar">
+        @Model.FullName.Substring(0,1).ToUpper()
+    </div>
+
+    <h2>@Model.FullName</h2>
+
+    <p>@Model.Specialty</p>
+
+    @if(Model.IsVerified)
+    {
+        <span class="verified-badge">✔ Verified Doctor</span>
+    }
+    else
+    {
+        <span class="pending-badge">Pending Verification</span>
+    }
+
+</div>
+
+<section class="profile-section">
+
+<div class="home-container">
+
+<div class="profile-card">
+
+<h2>@Model.FullName</h2>
+
+<p>@Model.Specialty</p>
+
+<hr/>
+
+<div class="profile-item">
+<label>Email</label>
+
+<span>
+
+@if(Model.IsProfilePublic)
+{
+    @Model.Email
+}
+else
+{
+    <text>Private</text>
+}
+
+</span>
+
+</div>
+
+<div class="profile-item">
+
+<label>Phone</label>
+
+<span>
+
+@if(Model.IsProfilePublic)
+{
+    @Model.PhoneNumber
+}
+else
+{
+    <text>Private</text>
+}
+
+</span>
+
+</div>
+
+<div class="profile-item">
+
+<label>Qualification</label>
+
+<span>@Model.Qualification</span>
+
+</div>
+
+<div class="profile-item">
+
+<label>Experience</label>
+
+<span>@Model.YearsOfExperience Years</span>
+
+</div>
+
+<div class="profile-item">
+
+<label>Achievements</label>
+
+<span>@Model.Achievements</span>
+
+</div>
+
+<div class="profile-item">
+
+<label>City</label>
+
+<span>@Model.City</span>
+
+</div>
+
+<div class="profile-item">
+
+<label>Country</label>
+
+<span>@Model.Country</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>

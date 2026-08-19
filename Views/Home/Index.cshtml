@@ -1,0 +1,234 @@
+﻿@model Doctors_Web_Forum.Models.HomeDashboardViewModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+<section class="hero">
+<div class="home-container hero-content">
+        <div class="hero-text">
+            <span class="hero-badge">Doctor Forum Community</span>
+
+            <h1>
+                Connect, Discuss & Learn with
+                <span>Medical Professionals</span>
+            </h1>
+
+            <p>
+                A trusted platform where doctors can ask medical questions,
+                share knowledge, discuss cases, and help each other grow
+                professionally.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a asp-controller="Account"
+                   asp-action="Register"
+                   class="btn btn-primary">
+                    Join Now
+                </a>
+
+                <a asp-controller="Question"
+                   asp-action="Index"
+                   class="btn btn-outline">
+                    View All Questions
+                </a>
+
+            </div>
+
+            <div class="hero-buttons" style="margin-top:20px;">
+
+                <a asp-controller="Question"
+                   asp-action="Ask"
+                   class="btn btn-primary">
+                    Ask Question
+                </a>
+
+                <a asp-controller="Question"
+                   asp-action="MyQuestions"
+                   class="btn btn-outline">
+                    My Questions
+                </a>
+
+                <a asp-controller="Question"
+                   asp-action="Index"
+                   class="btn btn-outline">
+                    Browse Questions
+                </a>
+
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700"
+                 alt="Doctor Forum">
+        </div>
+
+    </div>
+</section>
+
+<section class="stats-section">
+
+    <div class="home-container">
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-number">@Model.TotalDoctors</div>
+                <div class="stat-title">Registered Doctors</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number">@Model.TotalQuestions</div>
+                <div class="stat-title">Medical Questions</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number">@Model.TotalAnswers</div>
+                <div class="stat-title">Expert Answers</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div class="stat-title">Medical Specialties</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+                <section class="specialties-section">
+    <div class="home-container">
+
+        <div class="section-header">
+            <h2>Medical Specialties</h2>
+            <p>Find experts from different medical fields and collaborate with professionals.</p>
+        </div>
+
+        <div class="specialties-grid">
+
+            <div class="specialty-card">
+                <h3>Cardiology</h3>
+                <p>Heart care, cardiovascular diseases and treatments.</p>
+            </div>
+
+            <div class="specialty-card">
+                <h3>Dermatology</h3>
+                <p>Skin, hair and nail health with expert advice.</p>
+            </div>
+
+            <div class="specialty-card">
+                <h3>Pediatrics</h3>
+                <p>Medical care and health guidance for children.</p>
+            </div>
+
+            <div class="specialty-card">
+                <h3>General Medicine</h3>
+                <p>General healthcare consultation and diagnosis.</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+                <section class="discussion-section">
+
+    <div class="home-container">
+
+        <div class="section-header">
+            <h2>Latest Medical Discussions</h2>
+            <p>Explore recent questions shared by medical professionals.</p>
+        </div>
+
+        <div class="discussion-grid">
+
+            <div class="discussion-card">
+                <span class="discussion-tag">Cardiology</span>
+
+                <h3>What is the best treatment for early-stage hypertension?</h3>
+
+                <div class="discussion-meta">
+                    <span> 12 Replies</span>
+                    <span>•</span>
+                    <span>2 hours ago</span>
+                </div>
+
+                <a href="#" class="discussion-link">Read Discussion →</a>
+            </div>
+
+            <div class="discussion-card">
+                <span class="discussion-tag">Dermatology</span>
+
+                <h3>How do you manage severe eczema in children?</h3>
+
+                <div class="discussion-meta">
+                    <span> 8 Replies</span>
+                    <span>•</span>
+                    <span>5 hours ago</span>
+                </div>
+
+                <a href="#" class="discussion-link">Read Discussion →</a>
+            </div>
+
+            <div class="discussion-card">
+                <span class="discussion-tag">General Medicine</span>
+
+                <h3>Recommended antibiotics for community-acquired pneumonia?</h3>
+
+                <div class="discussion-meta">
+                    <span> 15 Replies</span>
+                    <span>•</span>
+                    <span>Yesterday</span>
+                </div>
+
+                <a href="#" class="discussion-link">Read Discussion →</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+                <section class="features-section">
+
+    <div class="home-container">
+
+        <div class="section-header">
+            <h2>Why Choose Doctor Forum?</h2>
+            <p>A professional platform designed exclusively for healthcare professionals.</p>
+        </div>
+
+        <div class="features-grid">
+
+            <div class="feature-card">
+                <div class="feature-icon">🩺</div>
+                <h3>Verified Doctors</h3>
+                <p>Only verified medical professionals can participate in discussions.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"></div>
+                <h3>Expert Discussions</h3>
+                <p>Share knowledge, discuss medical cases and learn from specialists.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"></div>
+                <h3>Secure Community</h3>
+                <p>Your discussions remain within a trusted healthcare community.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"></div>
+                <h3>Continuous Learning</h3>
+                <p>Stay updated with the latest medical practices and opinions.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+

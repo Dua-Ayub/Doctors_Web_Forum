@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Register";
+    Layout = "_Layout";
+}
+
+<div class="auth-wrap">
+  <h2 style="text-align:center; margin-bottom:20px;">Doctor Registration</h2>
+
+  @if (ViewBag.Error != null)
+  {
+    <p style="color:var(--color-coral-600); font-size:0.9rem; margin-bottom:14px; text-align:center;">@ViewBag.Error</p>
+  }
+
+  <form asp-controller="Account" asp-action="Register" method="post">
+
+    <div class="field">
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" name="fullName" placeholder="Dr. Your Name" required>
+    </div>
+
+    <div class="field">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required>
+    </div>
+
+    <div class="field">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Minimum 8 characters" required>
+    </div>
+
+    <div class="field">
+<label for="specialty">Specialty</label>
+<select id="specialty" name="Specialty" required>
+        <option value="">-- Select Specialty --</option>
+        <option value="Cardiology">Cardiology</option>
+        <option value="Dermatology">Dermatology</option>
+        <option value="Pediatrics">Pediatrics</option>
+        <option value="General Medicine">General Medicine</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="qualification">Qualification</label>
+      <input type="text" id="qualification" name="qualification" placeholder="e.g. MBBS, FCPS">
+    </div>
+
+    <div class="field">
+      <label for="yearsOfExperience">Years of Experience</label>
+      <input type="number" id="yearsOfExperience" name="yearsOfExperience" placeholder="e.g. 5" min="0">
+    </div>
+
+    <div class="field">
+      <label for="city">City</label>
+      <input type="text" id="city" name="city" placeholder="e.g. Karachi">
+    </div>
+
+    <div class="field">
+      <label for="country">Country</label>
+      <input type="text" id="country" name="country" placeholder="e.g. Pakistan">
+    </div>
+
+    <div class="field">
+      <label for="phoneNumber">Phone Number</label>
+      <input type="text" id="phoneNumber" name="phoneNumber" placeholder="03XXXXXXXXX">
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">Register</button>
+
+    <p class="field-hint" style="text-align:center; margin-top:14px;">
+      Already have an account? <a href="/Account/Login">Login here</a>
+    </p>
+
+  </form>
+</div>

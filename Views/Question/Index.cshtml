@@ -1,0 +1,122 @@
+﻿@model IEnumerable<Doctors_Web_Forum.Models.Question>
+
+@{
+    ViewData["Title"] = "Questions";
+    Layout = "_Layout";
+}
+
+<section class="questions-section">
+
+    <div class="home-container">
+
+        <h2 class="section-title">Latest Medical Questions</h2>
+        <form method="get" asp-action="Index" class="search-form">
+
+            <input type="text"
+                   name="search"
+                   value="@ViewBag.Search"
+                   placeholder="Search Question..." />
+
+            <input type="text"
+                   name="city"
+                   value="@ViewBag.City"
+                   placeholder="City" />
+
+            <input type="text"
+                   name="specialty"
+                   value="@ViewBag.Specialty"
+                   placeholder="Specialty" />
+
+            <input type="number"
+                   name="experience"
+                   value="@ViewBag.Experience"
+                   placeholder="Min Experience" />
+
+            <button type="submit" class="btn btn-primary">
+                Search
+            </button>
+
+            <a asp-action="Index"
+               class="btn btn-outline">
+                Reset
+            </a>
+
+        </form>
+
+        <!-- Search Box -->
+        <form asp-action="Index" method="get" class="search-form">
+
+            <input type="text"
+                   name="search"
+                   value="@ViewBag.Search"
+                   class="form-control"
+                   placeholder="Search questions..." />
+
+            <button type="submit" class="btn btn-primary">
+                Search
+            </button>
+
+        </form>
+
+        <br />
+
+        @if (!Model.Any())
+        {
+            <div class="empty-box">
+
+                <h3>No Questions Found</h3>
+
+                <p>Try another keyword or be the first doctor to ask a medical question.</p>
+
+                <a asp-controller="Question"
+                   asp-action="Ask"
+                   class="btn btn-primary">
+                    Ask Question
+                </a>
+
+            </div>
+        }
+        else
+        {
+            @foreach (var question in Model)
+            {
+                <div class="question-card">
+
+                    <h3>@question.Title</h3>
+
+                    <p>
+                        @(question.Description.Length > 150
+                            ? question.Description.Substring(0, 150) + "..."
+                            : question.Description)
+                    </p>
+
+                    <div class="question-info">
+
+                        <span>👨‍⚕️ @question.User.FullName</span>
+
+                        <span>🩺 @question.Specialty.Name</span>
+
+                        <span>👁 @question.View</span>
+
+                        <span>📅 @question.CreatedAt.ToShortDateString()</span>
+
+                        <span class="status">
+                            @question.Status
+                        </span>
+
+                    </div>
+
+                    <a asp-controller="Question"
+                       asp-action="Details"
+                       asp-route-id="@question.Id"
+                       class="btn btn-outline-primary">
+                        View Details
+                    </a>
+
+                </div>
+            }
+        }
+
+    </div>
+
+</section>

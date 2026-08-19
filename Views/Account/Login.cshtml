@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Doctor Login";
+    Layout = "_Layout";
+}
+
+<div class="auth-wrap">
+    <h2>Doctor Login</h2>
+
+    @if (ViewBag.Error != null)
+    {
+        <p style="color:#C6493D; text-align:center; margin-bottom:15px;">@ViewBag.Error</p>
+    }
+
+    <form asp-controller="Account" asp-action="Login" method="post">
+
+        <div class="field">
+            <label>Email</label>
+            <input type="email" name="email" required />
+        </div>
+
+        <div class="field">
+            <label>Password</label>
+            <input type="password" name="password" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+
+        <p class="field-hint">
+            Don't have an account?
+            <a href="/Account/Register">Register here</a>
+        </p>
+
+    </form>
+</div>

@@ -1,0 +1,88 @@
+﻿@model Doctors_Web_Forum.Models.Question
+
+@{
+    ViewData["Title"] = "Question Details";
+    Layout = "_Layout";
+}
+
+<section class="details-section">
+
+    <div class="home-container">
+
+        <!-- Question -->
+        <div class="question-detail-card">
+
+            <h2>@Model.Title</h2>
+
+            <div class="question-meta">
+                <span>👨‍⚕️ @Model.User.FullName</span>
+                <span>🩺 @Model.Specialty.Name</span>
+                <span>👁 @Model.View Views</span>
+                <span>📅 @Model.CreatedAt.ToShortDateString()</span>
+            </div>
+
+            <p class="question-description">
+                @Model.Description
+            </p>
+
+        </div>
+
+        <!-- Answers -->
+        <div class="answers-section">
+
+            <h3>Answers (@Model.Answers.Count)</h3>
+
+            @if (Model.Answers.Any())
+            {
+                foreach (var answer in Model.Answers)
+                {
+                    <div class="answer-card">
+
+                        <p>@answer.Description</p>
+
+                        <div class="answer-info">
+                            👨‍⚕️ @answer.User.FullName |
+                            📅 @answer.CreatedAt.ToShortDateString()
+                        </div>
+
+                    </div>
+                }
+            }
+            else
+            {
+                <p>No answers yet.</p>
+            }
+
+        </div>
+
+        <!-- Answer Form -->
+        <div class="answer-form">
+
+            <h3>Write Your Answer</h3>
+
+            <form asp-action="AddAnswer" method="post">
+
+                <input type="hidden"
+                       name="questionId"
+                       value="@Model.Id" />
+
+                <textarea
+                    name="description"
+                    rows="6"
+                    class="form-control"
+                    placeholder="Write your answer..."
+                    required></textarea>
+
+                <br />
+
+                <button type="submit" class="btn btn-primary">
+                    Submit Answer
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
